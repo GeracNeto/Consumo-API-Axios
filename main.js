@@ -6,6 +6,11 @@ const newUser = {
     city: "Rio de Janeiro"
 }
 
+const updatedUser = {
+    name: "Crash",
+    avatar: "https://picsum.photos/200",
+    city: "São Paulo"
+}
 
 // GET
 const getUser = () => {
@@ -28,4 +33,16 @@ const addNewUser = () => {
         .catch(e => console.log(e))
 }
 
-addNewUser()
+//addNewUser()
+
+// PUT
+const updateUser = () => {
+    axios.put(`${url}/2`, updatedUser)
+        .then(response => {
+            alert(JSON.stringify(response.data))
+        })
+        .catch(e => console.log(e))
+}
+
+//updateUser()
+
