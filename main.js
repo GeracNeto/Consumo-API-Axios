@@ -46,3 +46,14 @@ const updateUser = () => {
 
 //updateUser()
 
+// DELETE
+const deleteUser = () => {
+    axios.delete(`${url}/3`)
+        .then(response => {
+            alert(JSON.stringify(response.data))
+        })
+        .catch(e => console.log(e))
+}
+
+deleteUser()
+
