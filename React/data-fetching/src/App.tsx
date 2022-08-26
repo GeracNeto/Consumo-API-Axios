@@ -1,34 +1,14 @@
-import axios from 'axios'
-import { useQuery } from 'react-query'
+import { Route, Routes } from "react-router-dom";
 
-type RepositoryProps = {
-  full_name: string,
-  description: string
-}
+import { Repo } from "./pages/Repo";
+import { Repos } from "./pages/Repos";
 
-const url = 'http://api.github.com/users/geracneto/repos'
-
-function App() {
-
-  const { data, isFetching: loading } = useQuery<RepositoryProps[]>('repos', async () => {
-    const response = await axios.get(url)
-
-    return response.data
-  })
+export function App() {
 
   return (
-    <div className="App">
-      {loading && (<p>Carregando...</p>)}
-      <ul>
-        {data?.map(repo => (
-          <li key={repo.full_name}>
-            <strong>{repo.full_name}</strong>
-            <p>{repo.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Routes>
+      <Route path="/" element={<Repos />} />
+      <Route path="/repos/*" element={<Repo />} />
+    </Routes>
   )
 }
-
-export default App
