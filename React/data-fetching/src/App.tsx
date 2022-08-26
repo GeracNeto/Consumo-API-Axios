@@ -1,6 +1,4 @@
-import axios from "axios"
-
-import { useEffect, useState } from "react"
+import { useFetch } from "./hooks/useFetch"
 
 type RepositoryProps = {
   full_name: string,
@@ -11,20 +9,13 @@ const url = 'http://api.github.com/users/geracneto/repos'
 
 function App() {
 
-  const [repositories, setRepositories] = useState<RepositoryProps[]>([])
-
-  useEffect(() => {
-    axios.get(url)
-      .then(response => {
-        setRepositories(response.data)
-      })
-      .catch(e => console.log(e))
-  }, [])
+  const { data: repositories, isFetching: loading } = useFetch<RepositoryProps[]>(url)
 
   return (
     <div className="App">
+      {loading && (<p>Carregando...</p>)}
       <ul>
-        {repositories.map(repo => (
+        {repositories?.map(repo => (
           <li key={repo.full_name}>
             <strong>{repo.full_name}</strong>
             <p>{repo.description}</p>
