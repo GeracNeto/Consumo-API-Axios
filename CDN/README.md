@@ -3,4 +3,6 @@
 - Consumo da <a href="https://github.com/jakeliny/node-api-discover">API</a> utilizando apenas javascirpt e axios;
 - Axios importado pelo <a href="https://axios-http.com/docs/intro">CDN</a>
 
+`npm install` para instalar as dependências e `npm start` para inicializar a API
+
 
